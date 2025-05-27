@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "J.K. Rowling",
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "price": "Free",
+    "category": "Fantasy",
+    "image": "https://m.media-amazon.com/images/I/91L4QUm17ML._SY425_.jpg"
+  },
+  {
+    "id": 2,
+    "name": "George Orwell",
+    "title": "1984",
+    "price": 14.99,
+    "category": "Dystopian",
+    "image": "https://m.media-amazon.com/images/I/715WdnBHqYL._UF1000,1000_QL80_.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Harper Lee",
+    "title": "To Kill a Mockingbird",
+    "price": 12.49,
+    "category": "Classic",
+    "image": "https://m.media-amazon.com/images/I/91REf0GGuiL._SY425_.jpg"
+  },
+  {
+    "id": 4,
+    "name": "J.R.R. Tolkien",
+    "title": "The Hobbit",
+    "price": "Free",
+    "category": "Adventure",
+    "image": "https://m.media-amazon.com/images/I/91ZX8zNpwZL._SY466_.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Michelle Obama",
+    "title": "Becoming",
+    "price": "Free",
+    "category": "Biography",
+    "image": "https://m.media-amazon.com/images/I/41TPzD+TVsL._SY445_SX342_.jpg"
+  },
+  {
+    "id": 6,
+    "name": "J.K. Rowling",
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "price": "Free",
+    "category": "Fantasy",
+    "image": "https://m.media-amazon.com/images/I/91L4QUm17ML._SY425_.jpg"
+  },
+  {
+    "id": 7,
+    "name": "George Orwell",
+    "title": "1984",
+    "price": 14.99,
+    "category": "Dystopian",
+    "image": "https://m.media-amazon.com/images/I/715WdnBHqYL._UF1000,1000_QL80_.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Harper Lee",
+    "title": "To Kill a Mockingbird",
+    "price": 12.49,
+    "category": "Classic",
+    "image": "https://m.media-amazon.com/images/I/91REf0GGuiL._SY425_.jpg"
+  },
+  {
+    "id": 9,
+    "name": "J.R.R. Tolkien",
+    "title": "The Hobbit",
+    "price": "Free",
+    "category": "Adventure",
+    "image": "https://m.media-amazon.com/images/I/91ZX8zNpwZL._SY466_.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Michelle Obama",
+    "title": "Becoming",
+    "price": "Free",
+    "category": "Biography",
+    "image": "https://m.media-amazon.com/images/I/41TPzD+TVsL._SY445_SX342_.jpg"
+  }
+]
