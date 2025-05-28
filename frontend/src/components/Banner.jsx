@@ -5,7 +5,7 @@ function Banner() {
     <div className='max w-screen-2xl container mx-auto mt-4 md:px-20 px-4 flex flex-col md:flex-row'>
       <div className='w-full order-2 md:order-1 md:w-1/2'>
         <div className='my-12'>
-          <h1 className='text-4xl font-bold font-sans'>Welcome, here to learn something <br></br><span className='text-blue-500'>new everyday!</span></h1>
+          <h1 className='text-4xl font-bold font-sans'>Welcome, here to read something <br></br><span className='text-blue-500'>new everyday!</span></h1>
 
           <div className='my-6'>
             <p className='font-semibold '>Dive into a world of stories, knowledge, and imagination. At PageNest, you can explore and read a wide range of books online — anytime, anywhere. Whether you're into timeless classics, modern fiction, or educational reads, PageNest is your cozy corner for uninterrupted reading. No downloads, no distractions — just you and the pages that spark your curiosity.

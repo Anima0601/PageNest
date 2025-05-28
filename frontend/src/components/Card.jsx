@@ -4,7 +4,7 @@ import React from 'react'
 function Card({item}) {
 
   return (
-   <div className="card bg-base-100 w-96  shadow-sm my-12">
+   <div className="card bg-base-100 w-96  shadow-sm my-12 hover:scale-105 duration-200">
    <figure className="h-48 overflow-hidden flex justify-center items-center mt-4">
         <img
           src={item.image}
