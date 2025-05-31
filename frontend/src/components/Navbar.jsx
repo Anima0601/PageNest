@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+import Login from "./Login";
 function Navbar() {
   const NavItems = (
     <>
       <li className="font-bold"><Link to="/">Home</Link></li>
-      <li className="font-bold"><Link to="/about">About</Link></li>
+      <li className="font-bold"><Link to="/">About</Link></li>
       <li className="font-bold"><Link to="/course">Course</Link></li>
-      <li className="font-bold"><Link to="/contact">Contact</Link></li>
+      <li className="font-bold"><Link to="/contactus">Contact</Link></li>
     </>
   );
   return (
@@ -31,7 +32,9 @@ function Navbar() {
         </div>
       </div>
       <div className="navbar-end mr-2">
-        <button className="btn btn-neutral">Login</button>
+        <button className="btn btn-neutral"
+        onClick={()=>document.getElementById("my_modal_1").showModal()}>Login</button>
+         <Login/>
       </div>
     </div>
   )
