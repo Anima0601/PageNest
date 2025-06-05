@@ -1,10 +1,24 @@
-import React from 'react'
-import list from './../assets/list.json'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Card from './Card';
 import { Link } from 'react-router-dom';
 
+
 function CourseSegment() {
-  const Data = list;
+  const [book,setBook]=useState([]);
+  useEffect(()=>{
+    const getBook = async()=>{
+        try{
+          const res = await axios.get("http://localhost:4001/book");
+          console.log(res.data);
+          setBook(res.data);
+        }
+        catch(error){
+          console.log(error);
+        }
+    };
+    getBook();
+  },[])
   return (
     <div className="min-h-screen max-w-screen-2xl container mx-auto mt-4 md:px-20 px-4 flex flex-col md:flex-row">
       <div className="my-4 w-full">
@@ -24,7 +38,7 @@ function CourseSegment() {
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-3'>
-          {Data.map((item) => (
+          {book.map((item) => (
             <Card item={item} key={item.id} />
           ))}
         </div>
