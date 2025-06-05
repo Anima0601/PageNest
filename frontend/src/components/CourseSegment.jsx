@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 
 
 function CourseSegment() {
-  const [book,setBook]=useState([]);
+ const [books,setBooks]=useState([]);
   useEffect(()=>{
     const getBook = async()=>{
         try{
           const res = await axios.get("http://localhost:4001/book");
           console.log(res.data);
-          setBook(res.data);
+          setBooks(res.data);
         }
         catch(error){
           console.log(error);
@@ -19,6 +19,9 @@ function CourseSegment() {
     };
     getBook();
   },[])
+  
+  console.log(books);
+
   return (
     <div className="min-h-screen max-w-screen-2xl container mx-auto mt-4 md:px-20 px-4 flex flex-col md:flex-row">
       <div className="my-4 w-full">
@@ -38,7 +41,7 @@ function CourseSegment() {
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-3'>
-          {book.map((item) => (
+          {books.map((item) => (
             <Card item={item} key={item.id} />
           ))}
         </div>

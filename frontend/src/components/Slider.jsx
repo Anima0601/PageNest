@@ -6,13 +6,25 @@ import "slick-carousel/slick/slick-theme.css";
 import SlickSlider from "react-slick"; 
 
 function Slider() {
-    const [book,setBook]=useState([]);
+  const [books,setBooks]=useState([]);
   useEffect(()=>{
     const getBook = async()=>{
         try{
           const res = await axios.get("http://localhost:4001/book");
-          console.log(res.data);
-          setBook(res.data.filter((data)=>data.category=="Free"));
+         res.data.forEach((book) =>
+        console.log(`Book: ${book.title}, Price: "${book.price}"`)
+      );
+
+      // Proper filtering
+      const freeBooks = res.data.filter(
+        (book) =>
+          typeof book.price === "string" &&
+          book.price.trim().toLowerCase() === "free"
+      );
+
+      console.log("Filtered FREE books only:", freeBooks);
+
+      setBooks(freeBooks);
         }
         catch(error){
           console.log(error);
@@ -20,6 +32,8 @@ function Slider() {
     };
     getBook();
   },[])
+
+
     var settings = { 
         dots: true,
         infinite: false,
@@ -56,14 +70,14 @@ function Slider() {
     };
 
     return (
-        <div className='max w-screen-2xl container mx-auto mt-4 md:px-20 px-4'>
+        <div className='max-w-screen-2xl container mx-auto mt-4 md:px-20 px-4'>
             <div>
                 <h1 className='font-bold text-2xl mt-6'>Free Books</h1>
                 <p className='font-serif mt-1'>Read and enjoy a wide range of our free books anywhere,anytime.</p>
             </div>
             <div>
                 <SlickSlider {...settings}>
-                    {book.map((item) => (
+                    {books.map((item) => (
                         <Card item={item} key={item.id} />
                     ))}
                 </SlickSlider>
