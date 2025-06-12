@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Alert from './Alert';
+import axios from 'axios';
 
 function Signup() {
   const {
@@ -9,10 +11,27 @@ function Signup() {
     formState: { errors }
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("Signup Data:", data);
-    // Add signup logic here (e.g. API call)
-  };
+  const [alertMessage , setAlertMessage] = useState("");
+  const [alertType , setAlertType] = useState("");
+
+  const onSubmit = async (data) => {
+  try {
+    const payload = {
+      name: data.name,
+      emailid: data.email,
+      password: data.password
+    };
+
+    const res = await axios.post("http://localhost:4001/user/signup", payload);
+    console.log("Server Response:", res.data);
+    setAlertMessage("Signup successful!");
+    setAlertType("success");
+  } catch (error) {
+    console.error("Signup Error:", error.response?.data || error.message);
+    setAlertMessage(error.response?.data?.message || "Signup failed!");
+    setAlertType("error");
+  }
+};
 
   return (
     <div>
@@ -97,6 +116,7 @@ function Signup() {
               Login
             </button>
           </p>
+             {alertMessage && <Alert message={alertMessage} type={alertType} />}
         </fieldset>
       </form>
     </div>

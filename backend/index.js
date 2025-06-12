@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import bookRoute from "./route/book.route.js";
+import userRoute from "./route/user.route.js";
 import cors from "cors";
 
 dotenv.config();
@@ -17,6 +18,8 @@ app.get("/", (req, res) => {
   res.send("Hello from backend root!");
 });
 
+app.use("/user",userRoute);
+app.use(express.json());
 app.use("/book", bookRoute);
 
 const startServer = async () => {

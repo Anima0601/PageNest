@@ -1,10 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import Alert from './Alert';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 
 function Login() {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+        const { register, handleSubmit, formState: { errors } } = useForm();
+        const [alertMessage,setAlertMessage]= useState("");
+        const [alertType,setAlertType]= useState("");
+
+    const onSubmit = async (data) => {
+        try {
+            const payload = {
+                emailid: data.email,
+                password: data.password
+            };
+
+            const res = await axios.post("http://localhost:4001/user/login", payload);
+            console.log("Server Response:", res.data);
+            setAlertMessage("Login successful!");
+            setAlertType("success");
+
+        } catch (error) {
+            console.error("Login Error:", error.response?.data || error.message);
+            setAlertMessage(error.response?.data?.message || "Login failed!");
+            setAlertType("error");
+        }
+    };
+
+
     return (
         <div>
             <dialog id="my_modal_1" className="modal">
@@ -50,6 +74,9 @@ function Login() {
                                 <span className="text-blue-500 hover:underline">Signup</span>
                             </Link>
                         </p>
+
+                        {alertMessage && <Alert message={alertMessage} type={alertType} />}
+
                     </fieldset>
                 </form>
             </dialog>
