@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Alert from './Alert';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 
 function Login() {
         const { register, handleSubmit, formState: { errors } } = useForm();
-        const [alertMessage,setAlertMessage]= useState("");
-        const [alertType,setAlertType]= useState("");
 
     const onSubmit = async (data) => {
         try {
@@ -18,13 +16,14 @@ function Login() {
 
             const res = await axios.post("http://localhost:4001/user/login", payload);
             console.log("Server Response:", res.data);
-            setAlertMessage("Login successful!");
-            setAlertType("success");
+            toast.success("Logout Successful");
+            localStorage.setItem("User",JSON.stringify(res.data.user));
+            document.getElementById("my_modal_1").close();
+            window.location.reload();
 
         } catch (error) {
             console.error("Login Error:", error.response?.data || error.message);
-            setAlertMessage(error.response?.data?.message || "Login failed!");
-            setAlertType("error");
+            toast.error(error.response?.data?.message || "Login failed!");
         }
     };
 
@@ -75,7 +74,6 @@ function Login() {
                             </Link>
                         </p>
 
-                        {alertMessage && <Alert message={alertMessage} type={alertType} />}
 
                     </fieldset>
                 </form>

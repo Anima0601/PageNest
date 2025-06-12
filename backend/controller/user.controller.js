@@ -19,7 +19,14 @@ export const signup = async (req, res) => {
         });
 
         await createdUser.save();
-        res.status(201).json({ message: "User successfully created" });
+        res.status(201).json({
+            message: "SignIn Successful",
+            user: {
+                _id: createdUser._id,
+                name: createdUser.name,
+                emailid: createdUser.emailid
+            }
+        });
     }
     catch (error) {
         console.error("Error", error);
@@ -32,7 +39,7 @@ export const login = async (req, res) => {
         const { emailid, password } = req.body;
         const user = await User.findOne({ emailid });
 
-       
+
         if (!user) {
             return res.status(400).json({ message: "User not found" });
         }
@@ -43,7 +50,7 @@ export const login = async (req, res) => {
             return res.status(400).json({ message: "Invalid Credentials" });
         }
 
-       
+
         res.status(200).json({
             message: "Login Successful",
             user: {

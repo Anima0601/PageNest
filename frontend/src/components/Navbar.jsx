@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import Login from "./Login";
+import { useAuth } from "../Context/AuthProvider";
+import Logout from "./Logout";
 function Navbar() {
+  const [authUser,setAuthUser]=useAuth();
   const NavItems = (
     <>
       <li className="font-bold"><Link to="/">Home</Link></li>
@@ -31,11 +34,13 @@ function Navbar() {
           </ul>
         </div>
       </div>
+      {authUser?<Logout/>:
       <div className="navbar-end mr-2">
         <button className="btn btn-neutral"
         onClick={()=>document.getElementById("my_modal_1").showModal()}>Login</button>
          <Login/>
       </div>
+       }
     </div>
   )
 }
